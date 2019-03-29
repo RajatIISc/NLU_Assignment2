@@ -1,5 +1,5 @@
-#Neural Machine Translation
-#E1-246 Assignment 2
+[Neural Machine Translation]
+[E1-246 Assignment 2]
 
 from __future__ import absolute_import, division, print_function
 import tensorflow as tf
