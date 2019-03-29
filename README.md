@@ -2,23 +2,21 @@
 
 ## E1-246 Assignment 2
 
-from __future__ import absolute_import, division, print_function
+install __future__
 
-import tensorflow as tf
+install tensorflow
 
-tf.enable_eager_execution()
+install matplotlib.pyplot
 
-import matplotlib.pyplot
+install sklearn.model_selection
 
-from sklearn.model_selection import train_test_split
+install unicodedata
 
-import unicodedata
+install re
 
-import re
+install numpy
 
-import numpy
-
-import os
+install os
 
 Python files with different Attention Models are given names Accordingly.
 
