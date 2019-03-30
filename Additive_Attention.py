@@ -137,11 +137,11 @@ class Encoder(tf.keras.Model):
         self.batch_sz = batch_sz
         self.enc_units = enc_units
         self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
-        self.gru = gru(self.enc_units)
+        self.LSTM = LSTM(self.enc_units)
         
     def call(self, x, hidden):
         x = self.embedding(x)
-        output, state = self.gru(x, initial_state = hidden)        
+        output, state = self.LSTM(x, initial_state = hidden)        
         return output, state
     
     def initialize_hidden_state(self):
@@ -155,7 +155,7 @@ class Decoder(tf.keras.Model):
         self.batch_sz = batch_sz
         self.dec_units = dec_units
         self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
-        self.gru = gru(self.dec_units)
+        self.LSTM = LSTM(self.dec_units)
         self.fc = tf.keras.layers.Dense(vocab_size)
         
         # used for attention
@@ -187,7 +187,7 @@ class Decoder(tf.keras.Model):
         x = tf.concat([tf.expand_dims(context_vector, 1), x], axis=-1)
         
         # Passing the concatenated vector to the LSTM
-        output, state = self.gru(x)
+        output, state = self.LSTM(x)
         
         # output shape == (batch_size * 1, hidden_size)
         output = tf.reshape(output, (-1, output.shape[2]))
