@@ -115,8 +115,6 @@ dataset = dataset.batch(BATCH_SIZE, drop_remainder=True)
 
 
 def LSTM(units):
-  # If you have a GPU, we recommend using CuDNNGRU(provides a 3x speedup than GRU)
-  # the code automatically does that.
   if tf.test.is_gpu_available():
     return tf.keras.layers.CuDNNLSTM(units, 
                                     return_sequences=True, 
